@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bfiscgliiso23"]
+
+[ext_resource type="PackedScene" uid="uid://dy0xv564q3o42" path="res://Scenes/player.tscn" id="1_jjgbg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kyeng"]
+size = Vector3(30, 2, 30)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ugcao"]
+size = Vector3(30, 2, 30)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bo1nx"]
+size = Vector3(5, 1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jjgbg"]
+size = Vector3(5, 1, 10)
+
+[node name="main" type="Node3D" unique_id=758352277]
+
+[node name="env" type="Node" parent="." unique_id=1296354188]
+
+[node name="ground" type="StaticBody3D" parent="env" unique_id=1365175889]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="col" type="CollisionShape3D" parent="env/ground" unique_id=1794896162]
+shape = SubResource("BoxShape3D_kyeng")
+
+[node name="mesh" type="MeshInstance3D" parent="env/ground" unique_id=2023700978]
+mesh = SubResource("BoxMesh_ugcao")
+
+[node name="ground2" type="StaticBody3D" parent="env" unique_id=367654956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -6.490711)
+
+[node name="col" type="CollisionShape3D" parent="env/ground2" unique_id=760822083]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, -0.5, 0, 0.5, 0.8660254, 0, 0, 0)
+shape = SubResource("BoxShape3D_bo1nx")
+
+[node name="mesh" type="MeshInstance3D" parent="env/ground2" unique_id=859637192]
+transform = Transform3D(1, 0, 0, 0, 0.8660253, -0.49999997, 0, 0.49999997, 0.8660253, 0, 0, 0)
+mesh = SubResource("BoxMesh_jjgbg")
+
+[node name="light" type="DirectionalLight3D" parent="env" unique_id=1093725824]
+transform = Transform3D(-0.6569059, -0.7455348, 0.112483814, 0.60837734, -0.43599817, 0.6631611, -0.4453669, 0.50406706, 0.7399762, 0, 5.3136864, 4.8556213)
+shadow_enabled = true
+
+[node name="playable_characters" type="Node" parent="." unique_id=275531727]
+
+[node name="player" parent="playable_characters" unique_id=2118199326 instance=ExtResource("1_jjgbg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.189602, 0)
+
+[node name="enemies" type="Node" parent="." unique_id=29728881]
